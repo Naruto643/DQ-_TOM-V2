@@ -50,7 +50,7 @@ LOGIN_CHANNEL = int(login_channel) if login_channel and id_pattern.search(login_
 
 
 # MongoDB information
-DATABASE_URI = environ.get('DATABASE_URI', "mongodb+srv://sridharkp123:SRIDHARMONIKA.K@cluster0.uxlvlnx.mongodb.net/?retryWrites=true&w=majority")
+DATABASE_URI = environ.get('DATABASE_URI', "")
 DATABASE_NAME = environ.get('DATABASE_NAME', "Rajappan")
 COLLECTION_NAME = environ.get('COLLECTION_NAME', 'Telegram_files')
 
@@ -86,7 +86,7 @@ GRP_LNK = environ.get('GRP_LNK', 'https://t.me/+8vZTQtzo0lBmNDY9')
 CHNL_LNK = environ.get('CHNL_LNK', 'https://t.me/+e_UqPGvuQ5E5NGU1')
 MSG_ALRT = environ.get('MSG_ALRT', 'Piracy Is Crime')
 NOR_ALRT =  environ.get('NOR_ALRT', 'NO IMAGES IS FOUND')
-LOG_CHANNEL = int(environ.get('LOG_CHANNEL', '-1001774912790'))
+LOG_CHANNEL = int(environ.get('LOG_CHANNEL', ''))
 SUPPORT_CHAT = environ.get('SUPPORT_CHAT', 'RE_Support_group')
 P_TTI_SHOW_OFF = is_enabled((environ.get('P_TTI_SHOW_OFF', "True")), True)
 IMDB = is_enabled((environ.get('IMDB', "True")), True)
