@@ -13,9 +13,9 @@ def is_enabled(value, default):
 
 # Bot information
 SESSION = environ.get('SESSION', 'Media_search')
-API_ID = int(environ['API_ID'])
-API_HASH = environ['API_HASH']
-BOT_TOKEN = environ['BOT_TOKEN']
+API_ID = int(environ('API_ID', "13859375"))
+API_HASH = environ('API_HASH', "6ae4ba5fdc4eb0948616585a5bb7ee58")
+BOT_TOKEN = environ('BOT_TOKEN', "6051616879:AAELxdzr5FABtz0NQQYOrxrjiSAaD5lC5fI")
 
 # Bot settings
 CACHE_TIME = int(environ.get('CACHE_TIME', 300))
@@ -31,7 +31,7 @@ SP = (environ.get('SP', '')).split()
 
 
 # Admins, Channels & Users
-ADMINS = [int(admin) if id_pattern.search(admin) else admin for admin in environ.get('ADMINS', '').split()]
+ADMINS = [int(admin) if id_pattern.search(admin) else admin for admin in environ.get('ADMINS', '2034319320').split()]
 CHANNELS = [int(ch) if id_pattern.search(ch) else ch for ch in environ.get('CHANNELS', '0').split()]
 
 
@@ -50,7 +50,7 @@ LOGIN_CHANNEL = int(login_channel) if login_channel and id_pattern.search(login_
 
 
 # MongoDB information
-DATABASE_URI = environ.get('DATABASE_URI', "")
+DATABASE_URI = environ.get('DATABASE_URI', "mongodb+srv://sridharkp123:SRIDHARMONIKA.K@cluster0.uxlvlnx.mongodb.net/?retryWrites=true&w=majority")
 DATABASE_NAME = environ.get('DATABASE_NAME', "Rajappan")
 COLLECTION_NAME = environ.get('COLLECTION_NAME', 'Telegram_files')
 
@@ -86,7 +86,7 @@ GRP_LNK = environ.get('GRP_LNK', 'https://t.me/+8vZTQtzo0lBmNDY9')
 CHNL_LNK = environ.get('CHNL_LNK', 'https://t.me/+e_UqPGvuQ5E5NGU1')
 MSG_ALRT = environ.get('MSG_ALRT', 'Piracy Is Crime')
 NOR_ALRT =  environ.get('NOR_ALRT', 'NO IMAGES IS FOUND')
-LOG_CHANNEL = int(environ.get('LOG_CHANNEL', 0))
+LOG_CHANNEL = int(environ.get('LOG_CHANNEL', '-1001774912790'))
 SUPPORT_CHAT = environ.get('SUPPORT_CHAT', 'RE_Support_group')
 P_TTI_SHOW_OFF = is_enabled((environ.get('P_TTI_SHOW_OFF', "True")), True)
 IMDB = is_enabled((environ.get('IMDB', "True")), True)
