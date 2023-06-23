@@ -187,8 +187,7 @@ Nᴀᴍᴇ - {}"""
 
 𝗠𝗲𝘀𝘀𝗮𝗴𝗲 <b>: {}</b>"""
     
-  PINGS_TXT = """
-<b>🌟 Ping:</b>
+  PINGS_TXT = """<b>🌟 Ping:</b>
 
 Helps you to know your ping 🚶🏼‍♂️
 
