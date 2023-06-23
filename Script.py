@@ -187,6 +187,20 @@ Nᴀᴍᴇ - {}"""
 
 𝗠𝗲𝘀𝘀𝗮𝗴𝗲 <b>: {}</b>"""
     
+  PINGS_TXT ="""<b>🌟 Ping:</b>
+
+Helps you to know your ping 🚶🏼‍♂️
+
+<b>Commands:</b>
+
+• /alive - To check you are alive.
+• /ping - To get your ping.
+<b>🏹Usage🏹 :</b>
+
+• This commands can be used in pms and groups
+• This commands can be used buy everyone in the groups and bots pm
+• Share us for more features"""
+    
     CAPTION = """
  {file_name}
 
