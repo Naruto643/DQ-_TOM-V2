@@ -187,7 +187,8 @@ Nᴀᴍᴇ - {}"""
 
 𝗠𝗲𝘀𝘀𝗮𝗴𝗲 <b>: {}</b>"""
     
-  PINGS_TXT ="""<b>🌟 Ping:</b>
+  PINGS_TXT ="""
+<b>🌟 Ping:</b>
 
 Helps you to know your ping 🚶🏼‍♂️
 
@@ -199,7 +200,8 @@ Helps you to know your ping 🚶🏼‍♂️
 
 • This commands can be used in pms and groups
 • This commands can be used buy everyone in the groups and bots pm
-• Share us for more features"""
+• Share us for more features
+"""
     
     CAPTION = """
  {file_name}
