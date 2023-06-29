@@ -182,4 +182,4 @@ async def index_files_to_db(lst_msg_id, chat, msg, bot):
             logger.exception(e)
             await msg.edit(f'Error: {e}')
         else:
-            await msg.edit(f'✅ Total saved: <code>{total_files}</code>\n📇 Duplicate Files: <code>{duplicate}</code>\n🗑 Deleted Messages Skipped: <code>{deleted}</code>\n📻Non-Media Files: <code>{no_media + unsupported}</code>\n⛔️ Invalid: <code>{errors}</code>')
+            await msg.edit(f'✅ Successfully saved: <code>{total_files}</code> to Database!\n📇 Duplicate Files: <code>{duplicate}</code>\n🗑 Deleted Messages Skipped: <code>{deleted}</code>\n📻Non-Media Files: <code>{no_media + unsupported}</code>\n⛔️ Invalid: <code>{errors}</code>')
