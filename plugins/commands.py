@@ -670,7 +670,7 @@ async def save_template(client, message):
     await sts.edit(f"Sᴜᴄᴄᴇssғᴜʟʟʏ ᴄʜᴀɴɢᴇᴅ ᴛᴇᴍᴘʟᴀᴛᴇ ғᴏʀ {title} ᴛᴏ:\n\n{template}")
           
                 #==================Restart Function==================#
-@Client.on_message(filters.private & filters.command(['restart']) & filters.user(Config.ADMINS))
+@Client.on_message(filters.private & filters.command("restart") & filters.user(ADMINS))
 async def restart(client, message):
     msg = await message.reply_text(
         text="<i>Trying to restarting.....</i>"
