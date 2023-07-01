@@ -291,7 +291,7 @@ async def list_chats(bot, message):
         await message.reply_document('chats.txt', caption="List Of Chats")
 
 @Client.on_message(filters.command('status') & filters.incoming) 
- async def get_ststs(bot, message): 
+async def get_ststs(bot, message): 
      try: 
          rju = await message.reply('Fetching stats..') 
          total_users = await db.total_users_count() 
