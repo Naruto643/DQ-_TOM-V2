@@ -291,6 +291,7 @@ async def list_chats(bot, message):
         await message.reply_document('chats.txt', caption="List Of Chats")
 
 
+@Client.on_message(filters.command('status') & filters.incoming)
 async def stats_cb(client, query):
     # Server
     currentTime = time.strftime("%Hh%Mm%Ss", time.gmtime(time.time() - Bots.BOT_START_TIME))                    
@@ -313,7 +314,7 @@ async def stats_cb(client, query):
         totdb = get_size(536870912)
     except:
         file, users, chats, monsize, freedb = "Sheriyenna 🫡"
-    txt = Txt.STATUS_TXT.format(bot=Bots.BOT_MENTION, a=currentTime, b=cpu_usage, c=ram_usage,
+    txt = Txt.STATS_TXT.format(bot=Bots.BOT_MENTION, a=currentTime, b=cpu_usage, c=ram_usage,
         d=total, e=used, f=disk_usage, g=free, h=file, i=users, j=chats, k=monsize, l=freedb, m=totdb
     )
     btn = markup()(vars.help_emitter_btn)
