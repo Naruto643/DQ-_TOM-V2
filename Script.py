@@ -128,6 +128,26 @@ Cᴏᴍᴍᴀɴᴅs Aɴᴅ Usᴀɢᴇ:
 ♻️ ᴛᴏᴛᴀʟ ᴄʜᴀᴛs: <code>{}</code>
 🗃️ ᴜsᴇᴅ sᴛᴏʀᴀɢᴇ: <code>{}</code> 𝙼𝚒𝙱
 🆓 ғʀᴇᴇ sᴛᴏʀᴀɢᴇ: <code>{}</code> 𝙼𝚒𝙱</b>"""
+
+    STATS_TXT = """
+**--{bot}'s STATUS--**
+
+📡 __--Server Status--__
+◉ Uptime: `{a}`
+◉ CPU Usage: `{b}%`
+◉ RAM Usage: `{c}%`
+◉ Total Disk Space: `{d}`
+◉ Used Space: `{e} ({f}%)`
+◉ Free Space: `{g}`
+
+🗃️ __--Database Status--__
+◉ Tota Files: `{h}`
+◉ Tota Users: `{i}`
+◉ Tota Chats: `{j}`
+◉ Used Storage: `{k}` 
+◉ Free Storage: `{l}`
+◉ Total Storage: `{m}` 
+"""
     
     LOG_TEXT_G = """#NewGroup
 Gʀᴏᴜᴘ = {}(<code>{}</code>)
