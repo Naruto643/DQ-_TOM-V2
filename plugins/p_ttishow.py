@@ -292,7 +292,7 @@ async def list_chats(bot, message):
 
 @Client.on_message(filters.command('status') & filters.incoming) 
 async def get_ststs(bot, message): 
-     try: 
+    try: 
          rju = await message.reply('Fetching stats..') 
          total_users = await db.total_users_count() 
          totl_chats = await dib.get_total_file_count() 
