@@ -12,13 +12,13 @@ from pyrogram.types import Message
 @Client.on_message(filters.command('mdisk') & filters.private)
 async def start(bot, message):
     await message.reply(
-        f"**Hi, {message.chat.first_name} !!**\n\n"
-        "**I am your Personal MDisk Bot 🤗 Made by @Thanimaibots💞 Made by  : @sarbudeen786 Send me a MDisk Post to see the Magic 😅**")
+        f="Send me a MDisk Post to see the Magic 😅*")
+        
     
 @Client.on_message(filters.text & filters.private)
 async def Doodstream_uploader(bot, message):
     new_string = str(message.text)
-    conv = await message.reply("Ruko jara Sabar kro ✋")
+    conv = await message.reply("WAIT A SEC I WILL UPLOAD ✋")
     dele = conv["message_id"]
     try:
         Doodstream_link = await multi_Doodstream_up(new_string)
