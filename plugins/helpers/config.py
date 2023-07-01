@@ -12,7 +12,7 @@ ADMINS = int(environ.get("ADMINS", ""))
 CAPTION = environ.get("CAPTION", "")
 
 # for thumbnail ( back end is MrMKN brain 😉)
-DOWNLOAD_LOCATION = "./DOWNLOADS"
+# DOWNLOAD_LOCATION = "./DOWNLOADS"
 
 
 # mdisk
