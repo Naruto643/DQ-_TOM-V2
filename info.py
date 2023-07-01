@@ -55,7 +55,7 @@ DATABASE_NAME = environ.get('DATABASE_NAME', "Rajappan")
 COLLECTION_NAME = environ.get('COLLECTION_NAME', 'Telegram_files')
 
 # Custom Chats
-FILE_CHANNEL = int(environ.get('FILE_CHANNEL', ''))
+FILE_CHANNEL = environ.get('FILE_CHANNEL', '')
 FILE_CHANNEL_LINK = environ.get('FILE_CHANNEL_LINK', '')
 
 # This is required for the plugins involving the file system.
