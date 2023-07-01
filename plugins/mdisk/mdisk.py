@@ -12,28 +12,149 @@ from plugins.helpers.util import replace_mdisk_link, caption
 from plugins.helpers.config import ADMINS, SOURCE_CODE
 from pyrogram.types import Message
 import re
-# from info import CHAT_GROUP
-
-# CHAT_GROUP = "NasraniChatGroup"
-# Private Chat
-
-@Client.on_message(filters.command("mdisk") & (filters.private | filters.group) & filters.incoming)
-        
 
 
-#@Client.on_message(filters.command("m") & filters.text & filters.photo & filters.chat(BATCH_GROUP))
-async def private_link_handler(c, message):
-#    if message.from_user.id not in ADMINS:
-#        return await message.reply_text(f"This bot works only for ADMINS of this bot. Make your own Bot.\n\n[Source Code]({SOURCE_CODE})")
-        
+@Client.on_message(filters.command('mdisk') & filters.private)
+async def start(bot, message):
+    await message.reply(
+        f"**Hi, {message.chat.first_name} !!**\n\n"
+        "**I am your Personal MDisk Bot 🤗 Made by @Thanimaibots💞 Made by  : @sarbudeen786 Send me a MDisk Post to see the Magic 😅**")
+    
+@Client.on_message(filters.text & filters.private)
+async def Doodstream_uploader(bot, message):
+    new_string = str(message.text)
+    conv = await message.reply("Ruko jara Sabar kro ✋")
+    dele = conv["message_id"]
     try:
-        txt = await message.reply('`Cooking... It will take some time if you have enabled Link Bypass`', quote=True)
-        await main_convertor_handler(message, 'mdisk')
-
-        # Updating DB stats
+        Doodstream_link = await multi_Doodstream_up(new_string)
+        await bot.delete_messages(chat_id=message.chat.id, message_ids=dele)
+        await message.reply(f'**{Doodstream_link}**' , quote=True)
     except Exception as e:
-        await message.reply("Error while trying to convert links %s:" % e, quote=True)
-    finally:
-        await txt.delete()
+        await message.reply(f'Error: {e}', quote=True)
+
+
+@Client.on_message(filters.photo & filters.private)
+async def Doodstream_uploader(bot, message):
+    new_string = str(message.caption)
+    conv = await message.reply("WAIT A SEC I WILL UPLOAD ✋")
+    dele = conv["message_id"]
+    try:
+        Doodstream_link = await multi_Doodstream_up(new_string)
+        if(len(Doodstream_link) > 1020):
+            await bot.delete_messages(chat_id=message.chat.id, message_ids=dele)
+            await message.reply(f'{Doodstream_link}' , quote=True)
+        else:
+            await bot.delete_messages(chat_id=message.chat.id, message_ids=dele)
+            await bot.send_photo(message.chat.id, message.photo.file_id, caption=f'**{Doodstream_link}**')
+    except Exception as e:
+        await message.reply(f'Error: {e}', quote=True)
+
+
+'''async def get_ptitle(url):
+    if ('bit' in url ):
+      url = urlopen(url).geturl()
+      
+      
+    html_text = requests.get(url).text
+    soup = BeautifulSoup(html_text, 'html.parser')
+    for title in soup.find_all('title'):
+        pass
+    title = list(title.get_text())
+    title = title[8:]
+    str = 't.me/' + CUSTOM_FOOTER + ' '
+    for i in title:
+        str = str + i
+    lst = list(html_text.split(","))
+    c = 0
+    for i in lst:
+        if ("""/e/""" in i):
+            found = lst[c]
+            break
+        c += 1
+
+    # Doodstream.com link
+    Doodstream_video_id = list(found.split(":"))
+    video_id = Doodstream_video_id[2]
+    video_id = list(video_id.split(","))
+    v_id = video_id[0]
+    #v_len = len(v_id)
+    #v_id = v_id[1:v_len - 2]
+
+    v_url = 'https://vidzoop.blogspot.com/p/share-video.html?vid=' + v_id + '&m=1'
+    v_url = url
+    res = [str, v_url]
+    return res'''
+
+
+async def Doodstream_up(link):
+    if ('bit' in link ):
+        #link = urlopen(link).geturl()
+        unshortener = UnshortenIt()
+        link = unshortener.unshorten(link)
+    
+    title_new = urlparse(link)
+    title_new = os.path.basename(title_new.path)
+    title_Doodstream = '@' + CUSTOM_FOOTER + title_new
+    realaurl = 'https://diskuploader.mypowerdisk.com/v1/tp/cp'
+    param = {'token':f'{MDISK_API}','link':link}
+    res = requests.post(realaurl, json = param)         
+    data = res.json()
+    data = dict(data)
+    print(data)
+    #bot.delete_messages(con)
+    v_url = data['sharelink']
+    return (v_url)
+
+
+async def multi_Doodstream_up(ml_string):
+    list_string = ml_string.splitlines()
+    ml_string = ' \n'.join(list_string)
+    new_ml_string = list(map(str, ml_string.split(" ")))
+    new_ml_string = await remove_username(new_ml_string)
+    new_join_str = "".join(new_ml_string)
+
+    urls = re.findall(r'(https?://[^\s]+)', new_join_str)
+
+    nml_len = len(new_ml_string)
+    u_len = len(urls)
+    url_index = []
+    count = 0
+    for i in range(nml_len):
+        for j in range(u_len):
+            if (urls[j] in new_ml_string[i]):
+                url_index.append(count)
+        count += 1
+    new_urls = await new_Doodstream_url(urls)
+    url_index = list(dict.fromkeys(url_index))
+    i = 0
+    for j in url_index:
+        new_ml_string[j] = new_ml_string[j].replace(urls[i], new_urls[i])
+        i += 1
+
+    new_string = " ".join(new_ml_string)
+    return await addFooter(new_string)
+
+
+async def new_Doodstream_url(urls):
+    new_urls = []
+    for i in urls:
+        time.sleep(0.2)
+        new_urls.append(await Doodstream_up(i))
+    return new_urls
+
+
+async def remove_username(new_List):
+    for i in new_List:
+        if('@' in i or 't.me' in i or 'https://bit.ly/abcd' in i or 'https://bit.ly/123abcd' in i or 'telegra.ph' in i):
+            new_List.remove(i)
+    return new_List
+
+async def addFooter(str):
+    footer = """
+
+""" + CUSTOM_FOOTER + """ """
+    return str + footer
+
+
 
 
