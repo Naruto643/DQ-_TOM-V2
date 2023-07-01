@@ -101,7 +101,7 @@
 <details><summary>Deploy To Heroku</summary>
 <p>
 <br>
-<a href="https://heroku.com/deploy?template=https://github.com/azanhelpdesk/DQ-_TOM">
+<a href="https://heroku.com/deploy?template=https://github.com/maharaja91/DQ-_TOM-V2">
   <img src="https://www.herokucdn.com/deploy/button.svg" alt="Deploy To Heroku">
 </a>
 </p>
