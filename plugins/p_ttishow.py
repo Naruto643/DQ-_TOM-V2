@@ -289,3 +289,32 @@ async def list_chats(bot, message):
         with open('chats.txt', 'w+') as outfile:
             outfile.write(out)
         await message.reply_document('chats.txt', caption="List Of Chats")
+
+
+async def stats_cb(client, query):
+    # Server
+    currentTime = time.strftime("%Hh%Mm%Ss", time.gmtime(time.time() - Bots.BOT_START_TIME))                    
+    total, used, free = shutil.disk_usage(".")
+    total = humanbytes(total)
+    used = humanbytes(used)
+    free = humanbytes(free)
+    cpu_usage = psutil.cpu_percent()
+    ram_usage = psutil.virtual_memory().percent
+    disk_usage = psutil.disk_usage('/').percent
+    # Database
+    try:
+        file = await Media.count_documents()
+        users = await db.total_users_count()
+        chats = await db.total_chat_count()
+        mons = await db.get_db_size()
+        dbfree = 536870912 - mons
+        monsize = get_size(mons)
+        freedb = get_size(dbfree)
+        totdb = get_size(536870912)
+    except:
+        file, users, chats, monsize, freedb = "Sheriyenna 🫡"
+    txt = Txt.STATUS_TXT.format(bot=Bots.BOT_MENTION, a=currentTime, b=cpu_usage, c=ram_usage,
+        d=total, e=used, f=disk_usage, g=free, h=file, i=users, j=chats, k=monsize, l=freedb, m=totdb
+    )
+    btn = markup()(vars.help_emitter_btn)
+    return btn, txt
