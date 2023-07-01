@@ -352,8 +352,6 @@ async def list_chats(bot, message):
   
  DB 1 Used Size: {size} 
  DB 1 Free Size: {free} 
-#DB 2 Used Size: {siz}#
-#DB 2 Free Size: {fre}#
   
  Users Status 
   
